@@ -12,10 +12,13 @@
     "build": "npm run build --workspace=app",
     "start": "npm start --workspace=api",
     "lint": "eslint . --ext .js, .jsx",
-    "formatt": "prettier --write ."
+    "formatt": "prettier --write .",
+    "test": "playwright test",
+    "report": "playwright show-report"
   },
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "concurrently": "^7.6.0"
   }
 }

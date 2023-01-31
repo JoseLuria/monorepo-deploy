@@ -30,3 +30,8 @@ build
 
 # Database folder
 database
+
+# Testing
+/test-results/
+/playwright-report/
+/playwright/.cache/
