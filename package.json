@@ -1,7 +1,6 @@
 {
-  "name": "project",
+  "name": "c9-50-ft-mern",
   "version": "1.0.0",
-  "description": "No Country project",
   "workspaces": [
     "api",
     "app"
