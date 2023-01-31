@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "No Country project",
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "scripts": {
+    "front:dev": "npm run dev --workspace=app",
+    "back:dev": "npm run dev --workspace=api",
+    "dev": "concurrently \"npm:back:dev\" \"npm:front:dev\"",
+    "build": "npm run build --workspace=app",
+    "start": "npm start --workspace=api",
+    "lint": "eslint . --ext .js, .jsx",
+    "formatt": "prettier --write ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
