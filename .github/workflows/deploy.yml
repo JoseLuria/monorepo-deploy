@@ -24,6 +24,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run tests
+        run: npm run test
+
       - name: Install Railway
         run: npm i -g @railway/cli
 
