@@ -1,0 +1,74 @@
+name: Deploy pipeline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install packages
+        run: npm install
+      - name: Check Linting
+        run: npm run lint
+
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install packages
+        run: npm install
+      - name: Build project
+        run: npm run build
+      - name: Upload Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: app/dist
+
+  test:
+    needs: [lint, build]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install packages
+        run: npm install
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+      - name: Download Build
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: app/dist
+      - name: Run tests
+        run: npm run test
+
+      # - name: Install Railway
+      #   if: ${{ github.event_name == 'push' }}
+      #   run: npm i -g @railway/cli
+
+      # - name: Deploy
+      #   run: railway up
+      #   env:
+      #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
