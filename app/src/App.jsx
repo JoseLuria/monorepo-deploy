@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from '../components'
 import axios from 'axios'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
     <div>
       {message !== '' && <h1>{message}</h1>}
-      <button onClick={fetchData}>Fetch Data</button>
+      <Button onClick={fetchData}>Fetch Data</Button>
     </div>
   )
 }
