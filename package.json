@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm:back:dev\" \"npm:front:dev\"",
     "build": "npm run build --workspace=app",
     "start": "npm start --workspace=api",
-    "lint": "eslint . --ext .js, .jsx",
+    "lint": "npm run lint --workspace=api && npm run lint --workspace=app",
     "formatt": "prettier --write .",
     "test": "playwright test",
     "report": "playwright show-report"
