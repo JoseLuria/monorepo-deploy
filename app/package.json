@@ -10,9 +10,18 @@
     "lint": "eslint . --ext .js,.jsx"
   },
   "eslintConfig": {
-    "extends": "standard",
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:react/jsx-runtime",
+      "standard"
+    ],
     "rules": {
       "space-before-function-paren": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
     }
   },
   "dependencies": {
