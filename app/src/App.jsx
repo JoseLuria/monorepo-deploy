@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       {message !== '' && <h1>{message}</h1>}
-      <Button onClick={fetchData}>Fetch Data</Button>
+      {/* <Button onClick={fetchData}>Fetch Data</Button> */}
     </div>
   )
 }
