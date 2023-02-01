@@ -38,8 +38,8 @@ const config = {
     }
   ],
   webServer: {
-    command: 'npm run dev',
-    port: 3000
+    command: 'npm run start',
+    port: 3001
   }
 }
 
